@@ -9,7 +9,7 @@ Access to the EVA API is controlled via the NASA NAMs authentication management 
 + [Visit NAMs workflow system](https://nams.nasa.gov)
 + Select "Your requests"
 + Submit new request for "EVA-API"
-+ Select "TODO: SPONSOR" as the sponsor
++ Select Cuong Q. Nguyen as the sponsor
 
 
 
