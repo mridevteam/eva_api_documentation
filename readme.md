@@ -5,7 +5,7 @@ The following is a documentation of the available EVA (EMU) web services availab
 
     
 #### Access Request
-Access to the EVA API is controlled via the NASA NAMs authentication managment system.  To request access to the EVA API:
+Access to the EVA API is controlled via the NASA NAMs authentication management system.  To request access to the EVA API:
 + [Visit NAMs workflow system](https://nams.nasa.gov)
 + Select "Your requests"
 + Submit new request for "EVA-API"
@@ -63,7 +63,7 @@ A **Component** model has the following properties:
     + **installCost** - *number* - Any cost associated with the installation of the component.
     + **isEstimatedCost** - *bool* - Flags if entered costs are estimates. 
     + **fscm** - *string* - The Federal Supply Code for Manufacturers.
-    + **acquired** - *string* - This how the component was acquired / received into the responsibility of the contract and is either Capital Acquired Property (CAP) or Government Funished Property (GFP).
+    + **acquired** - *string* - This how the component was acquired / received into the responsibility of the contract and is either Capital Acquired Property (CAP) or Government Furnished Property (GFP).
     + **extendedAsbuilt** - *string* - Used for Vendor supplied components that have an asbuilt number greater than the 5 characters that asbuiltNumber supports.
     + **asbuiltStatus** - *string* - The status of an asbuilt bill of material for this component.
     + **companyTag** - *string* - A unique character-string identifying an item as company property.
@@ -906,7 +906,7 @@ URL
 A component's **calibration** Model has the following properties:
 
 + **id** - *number* - The NEDi Model id **(primary key, unique)**.
-+ **componentId** - *number* - The NEDi Model component id **(foriegn key, unique)**.
++ **componentId** - *number* - The NEDi Model component id **(foreign key, unique)**.
 + **attributes** - *array[object]* - An array of the limited life attributes for the component
     + **type** - *string* - The type of calibration.
     > available types: TODO:  DETERMINE TYPES.
@@ -964,7 +964,7 @@ A component's **Event** Model is a subset of the full [*Event model*](http://doc
     + **firstName** - *string* - The crew member's first name
     + **lastName** - *string* - The crew member's last name
     + **middleInitial** - *string* - The crew member's middle initial
-    + **nasaInitials** - *string* - The crew member's initals as assigned by NASA.
+    + **nasaInitials** - *string* - The crew member's initials as assigned by NASA.
     + **sex** - *string* - The crew member's sex
     + **type** - *string* - The crew member's type
     + **isActive** - *bool* - Shows if crewmember is currently active
@@ -1143,7 +1143,7 @@ A **Master** model has the following attributes:
     + **isPhantom** - *boolean* - A flag indicating part does not have a physical reality.  It exists as a phantom so that its components can be manipulated as a group.
     + **isSerial** - *boolean* - Aflag used to designate a part as serial controlled.
     + **isLot** - *boolean* - A flag used to designate an item as lot controlled.
-    + **ceiNumber** - *string* -Some items within equiment group 2.01 (EMU hardware) have a 3 digit contract end item (CEI) number, consisting of a digit 0-9 to further group or categorize the items.For example, a PLSS is CEI 100, HUT is 102, LTA is 104, SOP is 200, etc.  The CEI number is assigned by the vendor, Hamilton Standard and/or ILC.
+    + **ceiNumber** - *string* -Some items within equipment group 2.01 (EMU hardware) have a 3 digit contract end item (CEI) number, consisting of a digit 0-9 to further group or categorize the items.For example, a PLSS is CEI 100, HUT is 102, LTA is 104, SOP is 200, etc.  The CEI number is assigned by the vendor, Hamilton Standard and/or ILC.
     + **equipmentGroup** - *string* -A code for categorizing hardware into engineering groups for responsibility assignment.
     + **lifeLimit** - *string* -Short description of life limit.
     + **isADP** - *boolean* -  A flag indicates whether or not an item requires an approved data pack.
@@ -1163,7 +1163,7 @@ A **Master** model has the following attributes:
     + **shelfLifeDefault** - *number* - A value defining the maximum amount of time an item is allowed to sit on the shelf. 
     + **usageLifeDefault** - *number* - A value defining the maximum amount of time an item is allowed to be used.  
     + **timeLifeDefault** - *number* - A value defining the maximum amount of time allowed on the item.  
-    + **cycleshelfLifeDefault** - *number* - A value defining the maximum number of cycles allowed on the item before service; refurbishment or limited life extention must occur. 
+    + **cycleshelfLifeDefault** - *number* - A value defining the maximum number of cycles allowed on the item before service; refurbishment or limited life extension must occur. 
     + **flightLifeDefault** - *number* - A value defining the maximum number of flights the item can fly before it must be serviced, refurbished, downgraded, or scrapped.  
     + **shelfLifeUM** - *string* - Shelf life Unit of Measure.  Defines whether the shelf life limited life requirements are in DAYS, MONS or YRS. 
     + **usageLifeUM** - *string* - Usage life Unit of Measure.  Defines whether the usage life limited life requirements are in DAYS, MONS or YRS.
@@ -1185,8 +1185,8 @@ A **Master** model has the following attributes:
     + **FSC** - *number* -Federal Supply Class. FSC is a code assigned by the Federal Government to a manufacturer.
     + **isGP** - *boolean* - A flag to indicate whether there is a Green Procurement requirement for this item.
     + **gpCatCode** - *string* -  Green Procurement Category Code. It is used to identify a specific combination of a green procurement category and a green procurement subcategory for an item.
-    + **gpCat** - *string* -Green Procurement Category. It is used to identify a product category outlined in the Environmental Proctection Agency's Comprehensive Procurement Guideline(CPG) for an item.
-    + **gpSubcat** - *string* - Green Procurement Subcategory. It is used to identify a product subcategory outlined in the Environmental ProctectionAgency's Comprehensive Procurement Guideline (CPG) for an item.
+    + **gpCat** - *string* -Green Procurement Category. It is used to identify a product category outlined in the Environmental Protection Agency's Comprehensive Procurement Guideline(CPG) for an item.
+    + **gpSubcat** - *string* - Green Procurement Subcategory. It is used to identify a product subcategory outlined in the Environmental Protection Agency's Comprehensive Procurement Guideline (CPG) for an item.
     + **complexHardwareCode** - *string* - Identifies whether the item number is defined as complex or non-complex. The valid values are- 'C' for complex, 'N' for non-complex and 'X' for materials that do not fall within the Complex/Non-complex requirements.
     + **isTransfer** - *boolean* -This flag is used to identify whether the item number has been transferred.
     + **isTransition** - *boolean* - This flag is used to identify whether the item number has been transitioned.
@@ -1249,7 +1249,7 @@ A **Master** model has the following attributes:
                 "side": "right",
                 "itemSize": "large",
                 "asbuiltNumber": "A100L5B200R1RL",
-                "description": "Helmet assymbly to be used with EMU",
+                "description": "Helmet assembly to be used with EMU",
                 "stockUnitMeasure": "inches",
                 "currentEcl": "low level",
                 "itemType": "AB10",
@@ -1885,7 +1885,7 @@ A **Master** model has the following attributes:
 A master's **Quantity** Model has the following attributes:
 
 + **id** - *number* - The NEDi Model id **(primary key, unique)**.
-+ **masterId** - *number* - The NEDi Model master id **(foriegn key, unique)**.
++ **masterId** - *number* - The NEDi Model master id **(foreign key, unique)**.
 + **attributes** - *object* - Object containing the various quantities for a given master
     + TODO: NEED TO DEFINE
     
@@ -1914,7 +1914,7 @@ A master's **Quantity** Model has the following attributes:
 A master's **Limited life** Model has the following properties:
 
 + **id** - *number* - The NEDi Model id **(primary key, unique)**.
-+ **master** - *number* - The NEDi Model master id **(foriegn key, unique)**.
++ **master** - *number* - The NEDi Model master id **(foreign key, unique)**.
 + **attributes** - *array[object]* - An array of the limited life attributes for the master
     + **type** - *string* - The type of requirement.
     > available types: 'date', 'count', 'time'.
@@ -1969,7 +1969,7 @@ A master's **Limited life** Model has the following properties:
 A master's **bill** Model has the following properties:
 
 + **masterId** - *number* - The NEDi Model id of the corresponding master **(primary key, unique)**.
-+ **itemNumber** - *number* - The SARAH master id. **(foriegn key, unique)**.
++ **itemNumber** - *number* - The SARAH master id. **(foreign key, unique)**.
 + **children** - array[objects] - An array of the master's children sub-assembly master models as built as a subset.
     > *master models for both the array of children objects will be [Master Models](http://docs.emuapi.apiary.io/#reference/components/master-model)
 + **parent** - object - The master's parent master assembly as built top level information. 
@@ -2020,7 +2020,7 @@ A master's **bill** Model has the following properties:
 A Master's **Calibration** Model has the following properties:
 
 + **id** - *number* - The NEDi Model id **(primary key, unique)**.
-+ **itemNumber** - *number* - The SARAH master id. **(foriegn key, unique)**.
++ **itemNumber** - *number* - The SARAH master id. **(foreign key, unique)**.
 + **attributes** - *array[object]* - An array of the limited life attributes for the component
     + **type** - *string* - The type of calibration.
     > available types: TODO:  DETERMINE TYPES.
@@ -2068,8 +2068,8 @@ A Master's **Calibration** Model has the following properties:
 A master's **Drawing** Model has the following properties:
 
 + **id** - *number* - The NEDi Model id **(primary key, unique)**.
-+ **masterId** - *number* - The NEDi Model master id **(foriegn key, unique)**.
-+ **itemNumber** - *number* - The SARAH master id. **(foriegn key, unique)**.
++ **masterId** - *number* - The NEDi Model master id **(foreign key, unique)**.
++ **itemNumber** - *number* - The SARAH master id. **(foreign key, unique)**.
 + **attributes** - *object* - The Master's drawing attributes
     + **id** - *number* - The ESOC model id (primary key, unique)
     + **drawingNumber** - *string* -  Unique identifier for a drawing. **(primary key SARAH, unique)**
@@ -2088,7 +2088,7 @@ A master's **Drawing** Model has the following properties:
     + **comments** - *string* -  Comments for a drawing
     + **assetClassUsage** - *array[Objects]* - The allowed combinations of item class, asset classification and asset usage which can be applied to an item at the drawing level.
         + **itemClass** - *string* -  The quality class of an item.
-        + **assetClassification** - *string* -  Asset classification that is used with asset usage to catagorize drawings as to the level of configuration control required.
+        + **assetClassification** - *string* -  Asset classification that is used with asset usage to categorize drawings as to the level of configuration control required.
         + **assetUsage** - *string* -  Asset Usage that is used with asset classification to specify the level of configuration control for items at the drawing level. 
         + **isCritcalGse** - *bool* -  bool if the asset usage/asset classification combination applies to critical GSE.
     + **audit** - *object* - The component's auditable history items
@@ -2155,7 +2155,7 @@ A master's **Drawing** Model has the following properties:
 A master's **Audit** Model has the following attributes:
 
 + **id** - *number* - The NEDi Audit Model id **(primary key, unique)**.
-+ **itemNumber** - *number* - The NEDi Model master id **(foriegn key, unique)**.
++ **itemNumber** - *number* - The NEDi Model master id **(foreign key, unique)**.
 + **createdDate** - *date* - The date the component record was created.
 + **createdBy** - *string* - The user who created the master record.
 + **closedDate** - *date* - The date the master was closed.
@@ -2193,7 +2193,7 @@ A master's **Audit** Model has the following attributes:
 
 
 ## Group Events
-Events within EVA are flights, Chamber runs, EVAs, or other desginated activities. Events utlize hardware, tools, and/or material components, this usage is documented in the event's bill property.
+Events within EVA are flights, Chamber runs, EVAs, or other designated activities. Events utlize hardware, tools, and/or material components, this usage is documented in the event's bill property.
 
 ### Event Model [/event/{id}]
 
@@ -2372,13 +2372,13 @@ Supplying the *event id* will return all components (including sub assembly comp
 ## Group Documents
 Within EVA documents are written against masters and components.  The data relating to documents returned is specific to the documents type. Currently the available document types are:
 
-+ **DR** - *"Discrepancy Report"* - DRs are written against components and/or masters to document discovered descrepencies and actions taken to address.
++ **DR** - *"Discrepancy Report"* - DRs are written against components and/or masters to document discovered discrepancies and actions taken to address.
 + **EC** - *"Engineering Change"* - ECs are written against components and/or masters to document approved changes.
-+ **TPS** - *"Task Preperation Sheet"* - TPSs are written against components and details the task steps to be performed on a component.
++ **TPS** - *"Task Preparation Sheet"* - TPSs are written against components and details the task steps to be performed on a component.
 + **YTN** - *"Yellow Tag Notice"* - YTNs are written against components and/or masters to document a yellow tag.
 + **OD** - *"Other Documents"* - ODs are written against components and/or masters.
 + **ODT** - *"Over Due Tags"* - ODTs are written against components and/or masters.
-+ **FAB** - *"Fabrication Action Breakdown"* - FABs are written against masters and to the components that are fabricated to fufill the FAB.
++ **FAB** - *"Fabrication Action Breakdown"* - FABs are written against masters and to the components that are fabricated to fulfill the FAB.
 + **WAIVER** - *"Waivers"* - Waivers are written against masters and/or components.
 + **ADCN** - *"Advanced Drawing Change Notice"* - ADCNs are written against a master (drawing) to provide notice of an upcoming drawing change.
 + **DCN** - *"Drawing Change Notice"* - DCNs are written against a master (drawing) to provide notice of a drawing change.
@@ -2495,8 +2495,8 @@ A "DR" document type has the following attributes:
     + **flag** - *string* - ??? 1053 Records out of 117754 have flag = R
     + **manHour** - *number* - This is no longer used and there are only 3 records with data
     + **daysToClose** - *number* - The number indicating the amount of days it took from the last bought off step to the closure step.  (QRC has stated that this is no longer needed)
-    + **openProblemNumber** - *number* - A 2-digit code indicating the type of problem encounted when closing the document.  The OPEN_PROBLEM_NO is manually validated against a list maintained in Data Management/Record Center.  There is no validation within SARAH.  (QRC has stated that this column is no longer needed but there is history)
-    + **closeProblemNumber** - *number* - A 1 or 2 digit code indicating the type of problem encounted when closing the document.  The CLOSE_PROBLEM_NO is manually validated against a list maintained in Data Management/Record Center.  There is no validation within SARAH.  (QRC has stated that this column is no longer needed but there is history)
+    + **openProblemNumber** - *number* - A 2-digit code indicating the type of problem encountered when closing the document.  The OPEN_PROBLEM_NO is manually validated against a list maintained in Data Management/Record Center.  There is no validation within SARAH.  (QRC has stated that this column is no longer needed but there is history)
+    + **closeProblemNumber** - *number* - A 1 or 2 digit code indicating the type of problem encountered when closing the document.  The CLOSE_PROBLEM_NO is manually validated against a list maintained in Data Management/Record Center.  There is no validation within SARAH.  (QRC has stated that this column is no longer needed but there is history)
     + **interimDisposition** - *number* - Short title (verbage) describing the interim disposition or fix of the discrepancy (INTERIM_DISP1||INTERIM_DISP2)
     + **hasOpenShipper** - *bool* - A flag to indicate whether the DR (discrepancy report) will ship with the item as open paperwork (however, QRC has indicated no longer used)
     + **repairType** - *string* - A code defining the type of repair for the discrepancy (reference table exists DR_REPAIR_TYPES_REF)
@@ -2912,16 +2912,16 @@ A "TPS" document type has the following attributes:
     + **expendRefurbCode** - *string*  -  A code to indicate whether the component item is expendable or refurbishable.
     + **componentNumber** - *string*  -  The item number of the component item.
     + **componentDescription** - *string*   -  The description of the component item.
-    + **componenTracer** - *string*   -  The tracer of the component item.
+    + **componentTracer** - *string*   -  The tracer of the component item.
     + **componentDrawingNumber** - *string*   -  The drawing number of the component item.
     + **componentAsbuiltNumber** - *string*   -  The as-built number of the component item.
     + **componentSerialNumber** - *string*   -  The serial number (if any) of the component item.
     + **componentLotNumber** - *string*   -  The lot number (if any) of the component item.
     + **componentSide** - *string*   -  Designates the component item as right or left.
-    + **componentSize** - *string*  - Designates the size of thecomponent item.
-    + **isSerial** - *boolean* - Indicatesif  the component item is serial controlled.
-    + **isLot** - *boolean* - Indicatesif  the component item is lot controlled.
-    + **isShelfLifeSuspend** -  *boolean* - Indicatesif the shelf life of the component item has been suspended.
+    + **componentSize** - *string*  - Designates the size of the component item.
+    + **isSerial** - *boolean* - Indicates if  the component item is serial controlled.
+    + **isLot** - *boolean* - Indicates if  the component item is lot controlled.
+    + **isShelfLifeSuspend** -  *boolean* - Indicates if the shelf life of the component item has been suspended.
     + **shelfLife** - *date* -  The shelf life expiration date of the component item.
     + **usageLife** -  *date* -  The usage life expiration date of the component item.
     + **operationLife** - *date* -  The operation life expiration date of the component item.
@@ -3029,7 +3029,7 @@ A "TPS" document type has the following attributes:
                 "expendRefurbCode": "EXP",
                 "componentNumber": "C10B200",
                 "componentDescription": "Ball joint",
-                "componenTracer": "T1002",
+                "componentTracer": "T1002",
                 "componentDrawingNumber": "B2A1",
                 "componentAsbuiltNumber": "100B",
                 "componentSerialNumber": "42001285",
@@ -3148,7 +3148,7 @@ A "TPS" document type has the following attributes:
                 "expendRefurbCode": "EXP",
                 "componentNumber": "C10B200",
                 "componentDescription": "Ball joint",
-                "componenTracer": "T1002",
+                "componentTracer": "T1002",
                 "componentDrawingNumber": "B2A1",
                 "componentAsbuiltNumber": "100B",
                 "componentSerialNumber": "42001285",
@@ -3251,7 +3251,7 @@ A "TPS" document type has the following attributes:
                 "expendRefurbCode": "EXP",
                 "componentNumber": "C10B200",
                 "componentDescription": "Ball joint",
-                "componenTracer": "T1002",
+                "componentTracer": "T1002",
                 "componentDrawingNumber": "B2A1",
                 "componentAsbuiltNumber": "100B",
                 "componentSerialNumber": "42001285",
@@ -3297,7 +3297,7 @@ A "EC" document type has the following attributes:
         + **component** - *object* - The EVA component model
         > [*see Component model*](http://docs.emuapi.apiary.io/#reference/components/component-model)
         + **rollDash** - *string* - The configuration (dash number) the part rolls to authorized by the Engineering Change
-        + **authoirty** - *string* - The document that incorporated the EC for the specific line Item
+        + **authority** - *string* - The document that incorporated the EC for the specific line Item
         + **openDate** - *date* - The date the line item was opened.
         + **closeDate** - *date* - The date the line item was closed.
         + **audit** - *object* - The Audit model for the EC line Item
@@ -3365,7 +3365,7 @@ A "EC" document type has the following attributes:
                     {
                         "component": {},
                         "rollDash": "A105",
-                        "authoirty": "BCK",
+                        "authority": "BCK",
                         "openDate": 05-15-2015,
                         "closeDate": 06-11-2015,
                         "audit": {}
@@ -3373,7 +3373,7 @@ A "EC" document type has the following attributes:
                     {
                         "component": {},
                         "rollDash": "A200",
-                        "authoirty": "BCK",
+                        "authority": "BCK",
                         "openDate": 03-11-2015,
                         "closeDate": 04-21-2015,
                         "audit": {}
@@ -3444,7 +3444,7 @@ A "EC" document type has the following attributes:
                     {
                         "component": {},
                         "rollDash": "A105",
-                        "authoirty": "BCK",
+                        "authority": "BCK",
                         "openDate": 05-15-2015,
                         "closeDate": 06-11-2015,
                         "audit": {}
@@ -3452,7 +3452,7 @@ A "EC" document type has the following attributes:
                     {
                         "component": {},
                         "rollDash": "A200",
-                        "authoirty": "BCK",
+                        "authority": "BCK",
                         "openDate": 03-11-2015,
                         "closeDate": 04-21-2015,
                         "audit": {}
@@ -3507,7 +3507,7 @@ A "EC" document type has the following attributes:
                     {
                         "component": {},
                         "rollDash": "A145",
-                        "authoirty": "BWN",
+                        "authority": "BWN",
                         "openDate": 09-15-2014,
                         "closeDate": 10-11-2014,
                         "audit": {}
@@ -3515,7 +3515,7 @@ A "EC" document type has the following attributes:
                     {
                         "component": {},
                         "rollDash": "A230",
-                        "authoirty": "BWN",
+                        "authority": "BWN",
                         "openDate": 02-05-2014,
                         "closeDate": 04-16-2014,
                         "audit": {}
@@ -3571,7 +3571,7 @@ A "FAB" document type has the following attributes:
     + **totalAttachment** - *number* - The number of attachments which accompany the printed Working FAB (i.e. drawings, sketches, procedures, etc)
     + **unitCost** - *number* - The per-unit cost of the item being fabricated.
     + **totalCost** - *number* - : Calculated value and is the total cost of the item(s) being fabricated (unitCost * quantityOrdered).
-    + **originalDueDate** - *date* - Stores Theoriginal due date that can be compared to current due date.
+    + **originalDueDate** - *date* - The original due date that can be compared to current due date.
     + **originalStartDate** - *date* - The original date where the work on the Fab was scheduled to start.
     + **originalEndDate** - *date* - The original date when the work on the FAB was due to be completed. 
     + **hasRedline** - *boolean* - "Y" indicates that the FAB was modified (redlined) on the floor. "N" indicates that the FAB was not changed (redlined) before completion.
@@ -3689,7 +3689,7 @@ A "FAB" document type has the following attributes:
                 "actualFABRevision":  "REV A",
                 "actualQuantityBuilt":  "CC",
                 "stockUnitMeasure":  "inches",
-                "staus":  "pending",
+                "status":  "pending",
                 "hasDCN":  True,
                 "type":   "EC",
                 "revision":   "REV B",  
@@ -3801,7 +3801,7 @@ A "FAB" document type has the following attributes:
                 "actualFABRevision":  "REV A",
                 "actualQuantityBuilt":  "CC",
                 "stockUnitMeasure":  "inches",
-                "staus":  "pending",
+                "status":  "pending",
                 "hasDCN":  True,
                 "type":   "EC",
                 "revision":   "REV B",  
@@ -3897,7 +3897,7 @@ A "FAB" document type has the following attributes:
                 "actualFABRevision":  "REV A",
                 "actualQuantityBuilt":  "CC",
                 "stockUnitMeasure":  "inches",
-                "staus":  "pending",
+                "status":  "pending",
                 "hasDCN":  True,
                 "type":   "EC",
                 "revision":   "REV B",  
@@ -3998,7 +3998,7 @@ A "YTN" document type has the following attributes:
                         "type": "FAB",
                         "opentDate": 04-02-2015,
                         "closeDate": 06-1-2015,
-                        "title": "Helemet visor",
+                        "title": "Helmet visor",
                         "comments": "There is peeling on the gold coating"
                     },
                     "initiator": "CJESTES",
@@ -4065,7 +4065,7 @@ A "YTN" document type has the following attributes:
                         "type": "FAB",
                         "opentDate": 04-02-2015,
                         "closeDate": 06-1-2015,
-                        "title": "Helemet visor",
+                        "title": "Helmet visor",
                         "comments": "There is peeling on the gold coating"
                     },
                     "initiator": "CJESTES",
@@ -4116,7 +4116,7 @@ A "YTN" document type has the following attributes:
                         "type": "FAB",
                         "opentDate": 04-02-2015,
                         "closeDate": 06-1-2015,
-                        "title": "Helemet visor",
+                        "title": "Helmet visor",
                         "comments": "There is peeling on the gold coating"
                     },
                     "initiator": "CJESTES",
@@ -4337,7 +4337,7 @@ A "ODT" document type has the following attributes:
 + **audit** - *object* - The Audit model for the ODT
 + **attributes** - *object* - The documents attributes (specific to it's type).
     + **initiator** - *string* - TODO:  The name of the person that initiated the overdue tag
-    + **authorizingDocument** - *object* - The document model of the authorizing document that peformed the maint. on the overdue component. (typically a TPS or DR but doesn’t have to be)
+    + **authorizingDocument** - *object* - The document model of the authorizing document that performed the maint. on the overdue component. (typically a TPS or DR but doesn’t have to be)
         > [*see general Document model*](http://docs.emuapi.apiary.io/#reference/documents/document-model)
     + **lineItems** - *array[objects]* - The ODT line items.    
         + **component** -  *object* - The component the ODT line item is written against.
@@ -5574,12 +5574,12 @@ A "CrewMember" model has the following attributes:
 + **firstName** - *string* - The crew member's first name
 + **lastName** - *string* - The crew member's last name
 + **middleInitial** - *string* - The crew member's middle initial
-+ **nasaInitials** - *string* - The crew member's initals as assigned by NASA.
++ **nasaInitials** - *string* - The crew member's initials as assigned by NASA.
 + **sex** - *string* - The crew member's sex
 + **type** - *string* - The crew member's type
 + **isActive** - *bool* - Shows if crewmember is currently active
 + **antropometric** - *object* - The crew member's antropometric sizing data
-    + **measurementCollector** - *string* - The name of the technican entering the measurements
+    + **measurementCollector** - *string* - The name of the technician entering the measurements
     + **height** - *number* - The measurement of the vertical distance from the standing surface to the top of the subject's head.
     + **cervicalHeight** - *number* - The measurement of the vertical distance from the standing surface to the subject's cervical landmark (point on the back of the neck).
     + **midShoulderHeightLeft** - *number* - The measurement of the vertical distance from the standing surface to the left midshoulder landmark (approximately half the distance across the top of the shoulder).
