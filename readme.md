@@ -1112,6 +1112,7 @@ Components within EVA are the serial and/or lot controlled EVA hardware, tools, 
 **Component Models consist of**:
 + [identification data](http://docs.emuapi.apiary.io/#reference/masters/master-model)
 + [attributes](http://docs.emuapi.apiary.io/#reference/masters/master-model)
++ [comments](http://docs.emuapi.apiary.io/#reference/masters/comments-model)
 + [quantity](http://docs.emuapi.apiary.io/#reference/masters/quantity-model)
 + [bill](http://docs.emuapi.apiary.io/#reference/masters/bill-model) of material
 + associated [documents](http://docs.emuapi.apiary.io/#reference/masters/document-model)
@@ -1127,8 +1128,13 @@ A **Master** model has the following attributes:
 + **itemNumber** - *string* - The SARAH id for the master **(primary key SARAH, unique)**.
 + **description** - *string* - The description of the master.
 + **drawingNumber** - *string* - The master's drawing number.
++ **asbuiltNumber** - *string* - A configuration version number of a drawing.
++ **side** - *string* - Designates an item as right or left.
++ **itemSize** - *string* - Designates the size of an item.
++ **equipmentGroup** - *string* -  A code for categorizing hardware into engineering groups for responsibility assignment.
++ **approvalStatus** - *string* - The status of the approval.  “I” (initiate), “P” (pending approval), “R” (rejected), “F” (fully approved).
 + **attributes** - *object* - The master's attributes.
-   + **itemNumber** - *string* - Unique identifier for any manufactured or purchased part, material, subassembly, product or service.
+    + **itemNumber** - *string* - Unique identifier for any manufactured or purchased part, material, subassembly, product or service.
     + **drawingNumber** - *string* - Unique identifier for a drawing.
     + **side** - *string* - Designates an item as right or left.
     + **itemSize** - *string* - Designates the size of an item.
@@ -1137,8 +1143,11 @@ A **Master** model has the following attributes:
     + **stockUnitMeasure** - *string* - Stock unit of measure.
     + **currentEcl** - *string* - Indicates the Engineering Change Level for an item.
     + **itemType** - *string* - A method of associating item numbers into a group.
+    + **itemTypeDescription** - *string* - The description of  an item type code.
     + **category** - *string* - Category is a one or two letter code that identifies the kind of hardware the part is.  Examples: "BE" is business equipment, "H" is flight hardware, "EH" is EMU hardware, RF is raw food, FF is flight food, etc.
+    + **categoryDescription** - *string* - The description of a category code.
     + **objectClass** - *number* -A method of grouping equipment for Property.
+    + **objectClassDescription** - *string* - The description of  an object class code.
     + **status** - *string* -A code to indicate if the item is "A"ctive or "I"nactive.  
     + **isPhantom** - *boolean* - A flag indicating part does not have a physical reality.  It exists as a phantom so that its components can be manipulated as a group.
     + **isSerial** - *boolean* - Aflag used to designate a part as serial controlled.
@@ -1154,6 +1163,7 @@ A **Master** model has the following attributes:
     + **isCycleLife** - *boolean* -A Flag to indicate whether there is a cycle limited life requirement for the item.
     + **isFlightLife** - *boolean* - A Flag to indicate whether there is a flight limited life requirement for the item.  
     + **reasonInitCode** - *string* - A code used to identify what caused the initiation of the item master.
+    + **reasonInitCodeDescription** - *string* - The description of a reason init code.
     + **approvalStatus** - *string* - The status of the approval.
     + **vendorCode** - *string* - A six-digit number assigned to suppliers of SGT equipment and services.
     + **limitedLifeCode** - *string* - A code that defines the limited life type.
@@ -1175,14 +1185,17 @@ A **Master** model has the following attributes:
     + **flightLifeServiceDefault** - *number* -Flight Life Service Default.  This defines when the item must be serviced which then re-starts the limited life "clock".
     + **isCleanTrack** - *boolean* - A flag to indicate if cleanliness tracking is required on this item.
     + **preciousCode** - *string* - A two digit code used to designate a precious material.
+    + **preciousCodeDescription** - *string* - The description of a precious code.
     + **initDocument** - *string* -Document number that authorizes part to be initialized into SARAH.
     + **vendorItemNumber** - *string* - Vendor's part number.
     + **inventoryMethod** - *string* -The method by which the item will be inventoried. C=Count, O=Observation, and W=Weighed.
     + **criticalityCode** - *string* - A code describing the importance of an item to the mission, the vehicle, or the crew.  1/1 = Loss of either crew or vehicle or both; 2/2 = Loss of Mission; 3/3 = No effect on either crew, vehicle, or mission; 2/1R = Loss of mission for a single failure, Loss of crew for multiple failure of redundant items; 3/1R = No effect for a single failure, Loss of crew for multiple failure of redundant items; 3/2R = No effect for a single failure, Loss of mission for multiple failures of redundant items
+    + **critCodeDescription** - *string* - The description of a criticality code.
     + **isFractureCritical** - *boolean* - A Flag indicates whether the item is a fracture critical part. A fracture critical part is one whose failure would result in a catastrophic occurrence such as loss of life, disabling injury, or loss of vehicle or mission.
     + **itemWeight** - *number* - The weight of an item in pounds.
     + **isPreprocessedHardware** - *boolean* - A flag indicates whether the item is preprocessed hardware.
     + **FSC** - *number* -Federal Supply Class. FSC is a code assigned by the Federal Government to a manufacturer.
+    + **fscDescription** - *string* - The description of a Federal Supply Class code.
     + **isGP** - *boolean* - A flag to indicate whether there is a Green Procurement requirement for this item.
     + **gpCatCode** - *string* -  Green Procurement Category Code. It is used to identify a specific combination of a green procurement category and a green procurement subcategory for an item.
     + **gpCat** - *string* -Green Procurement Category. It is used to identify a product category outlined in the Environmental Proctection Agency's Comprehensive Procurement Guideline(CPG) for an item.
@@ -1190,7 +1203,6 @@ A **Master** model has the following attributes:
     + **complexHardwareCode** - *string* - Identifies whether the item number is defined as complex or non-complex. The valid values are- 'C' for complex, 'N' for non-complex and 'X' for materials that do not fall within the Complex/Non-complex requirements.
     + **isTransfer** - *boolean* -This flag is used to identify whether the item number has been transferred.
     + **isTransition** - *boolean* - This flag is used to identify whether the item number has been transitioned.
-    + **programCode** - *string* - A code number of program to which depreciation will be charged. 
     + **isSphn** - *boolean* - A flag is used to designate special packaging, handling, storage and transportation requirements.
     + **isOperationLife** - *boolean* - A flag to indicate whether there is an operational life requirement for the item. 
     + **operationLifeDefault** - *number* - Maximum amount of chronological time or manned pressurized time in days, months or years that the part can be used which starts once the part is put into service or removed from controlled conditions.
@@ -1207,6 +1219,8 @@ A **Master** model has the following attributes:
     + **isEvaLimit** - *boolean* - A flag to indicate whether there is a EVA limited life requirement for the item. 
     + **evaLimitDefault** - *number* - Maximum number of EVAs.
     + **evaLimitServiceDefault** - *number* - Number of EVAs allowed prior to requiring service.
++ **comments** - *array[objects]* - The master's item comment data.
+    >[*see comments model*](http://docs.emuapi.apiary.io/#reference/masters/comments-model)
 + **quantity** - *object* - The master inventory quantities for child components
     >[*see quantity model*](http://docs.emuapi.apiary.io/#reference/masters/quantity-model)
 + **limitedLife** - *array[objects]* - The master's limited life data
@@ -1460,7 +1474,7 @@ A **Master** model has the following attributes:
     
     QUERY STRING OPTIONS
     since:  Only return records that have been updated since the parameter
-    
+	    
 + Response 200 (application/json)
 
          [{
@@ -1476,7 +1490,6 @@ A **Master** model has the following attributes:
                 "asbuiltNumber": "A100L5B200R1RL",
                 "description": "Helmet assymbly to be used with EMU",
                 "stockUnitMeasure": "inches",
-                "currentEcl": "low level",
                 "itemType": "AB10",
                 "category": "BE",
                 "objectClass": 1105,
@@ -1879,6 +1892,193 @@ A **Master** model has the following attributes:
                 "lastUpdatedDate": 01-30-2015
             }
         }]
+
+#### Get Master Item Header Model [GET]
+
+    URL
+    /master/item
+           	
++ Response 200 (application/json)
+
+         [{
+            "id": 1,
+            "itemNumber": "SVG1235",
+            "description": "EMU GLOVE",
+            "drawingNumber": "1234Draw",
+            "side": "right",
+            "itemSize": "large",
+            "asbuiltNumber": "A100L5B200R1RL",
+            "equipmentGroup": "TB100",
+            "status": "A"
+        }]
+		
+#### Get Master Item Attributes Model [GET]
+
+    URL
+    /master/item/{id}/attributes
+           
+    PAMAMETERS  
+      id: sarahEdiId
+	
++ Response 200 (application/json)
+
+         {
+            "id": 1,
+            "itemNumber": "SVG1235",
+            "description": "EMU GLOVE",
+            "drawingNumber": "1234Draw",
+            "side": "right",
+            "itemSize": "large",
+            "asbuiltNumber": "A100L5B200R1RL",
+            "equipmentGroup": "TB100",
+            "status": "A",
+            "attributes": {
+                "itemNumber": "A100L5",
+                "drawingNumber": "B200R1",
+                "description": "Helmet assymbly to be used with EMU",
+                "stockUnitMeasure": "inches",
+                "itemTypeDescription": "FLIGHT_FOOD - BEVERAGE",
+                "categoryDescription": "BUSINESS EQUIPMENT",
+                "objectClassDescription": "MATERIAL",
+                "status": "A",
+                "isPhantom": True,
+                "isSerial": True,
+                "isLot": True,
+                "ceiNumber": "A123B10",
+                "equipmentGroup": "TB100",
+                "isADP": True,
+                "soleSourceCode": "M",
+                "reasonInitCodeDescription": "PREVIOUSLY APPROVED",
+                "approvalStatus": "Awaiting signitures",
+                "vendorCode": "500100",
+                "isHazardousMaterial": False,
+                "expendRefurbCode": "Exp",
+                "hdwSource": "Ratheon",
+                "isCleanTrack": True,
+                "preciousCodeDescription": "SILVER"
+                "initDocument": "S100B2",
+                "vendorItemNumber": "C100",
+                "inventoryMethod": "C",
+                "critCodeDescription ": "NO EFECT/REDUNDANCY LOSS=LOSS OF MISSION",
+                "isFractureCritical": True,
+                "itemWeight": 1125,
+                "isPreprocessedHardware": False,
+                "fscDescription": "GROUP 75 OFFICE SUPPLIES AND DEVICES",
+                "isGP": True,
+                "gpCatCode": "GP100B",
+                "gpCat": "Reusable",
+                "gpSubcat": "Non-corrosive",
+                "complexHardwareCode": "C",
+                "isSphn": False
+         }    
+		}
+
+#### Get Master Item Limited Life Model [GET]
+
+    URL
+    /master/item/{id}/limited_life 
+	
+    PAMAMETERS  
+      id: sarahEdiId
+	
++ Response 200 (application/json)
+
+         {
+            "id": 1,
+            "itemNumber": "SVG1235",
+            "description": "EMU GLOVE",
+            "drawingNumber": "1234Draw",
+            "side": "right",
+            "itemSize": "large",
+            "asbuiltNumber": "A100L5B200R1RL",
+            "equipmentGroup": "TB100",
+            "status": "A".
+            "lifeLimit": "Limited to ten uses before needing rebuild",
+            "isShelfLife": True,
+            "isUsageLife": True,
+            "isTimeLife": True,
+            "isCycleLife": Flase,
+            "isFlightLife": False,
+            "limitedLifeCode": "STerm",
+            "shelfLifeDefault": 100,
+            "usageLifeDefault": 25,
+            "timeLifeDefault": 365,
+            "cycleshelfLifeDefault": 10,
+            "flightLifeDefault": 5,
+            "shelfLifeUM": "DAYS",
+            "usageLifeUM": "DAYS",
+            "timeLifeUM": "MONS", 
+            "usageLifeServiceDefault": 15,
+            "timeLifeServiceDefault": 20,
+            "cycleLifeServiceDefault": 10,
+            "flightLifeServiceDefault": 20,
+            "isOperationLife": True,
+            "operationLifeDefault": 365,
+            "operationLifeServiceDefault": 180,
+            "operationLifeUnitMeasure": "Days",
+            "isOnOrbitLife": True,
+            "onOrbitLifeDefault": 365,
+            "onOrbitLifeServiceDefault": 180,
+            "onOrbitLifeUnitMeasure": "Days",
+            "isIntervalLife": True,
+            "intervalLifeDefault": 180,
+            "intervalLifeServiceDefault": 90,
+            "intervalLifeUnitMeasure": "Days",
+            "isEvaLimit": True,
+            "evaLimitDefault": 5,
+            "evaLimitServiceDefault": 10,
+			"isADP": True,
+		    "ceiNumber": "A123B10"
+        }
+
+### Comments Model [/master/item/{id}/comments]
+
+A master's **Comments** Model has the following attributes:
+
++ **id** - *number* - the ESOC model id **(primary key, unique)**.
++ **itemNumber** - *string* - The SARAH id for the master **(primary key SARAH, unique)**.
++ **description** - *string* - The description of the master.
++ **drawingNumber** - *string* - The master's drawing number.
++ **asbuiltNumber** - *string* - A configuration version number of a drawing.
++ **side** - *string* - Designates an item as right or left.
++ **itemSize** - *string* - Designates the size of an item.
++ **equipmentGroup** - *string* -  A code for categorizing hardware into engineering groups for responsibility assignment.
++ **approvalStatus** - *string* - The status of the approval.  “I” (initiate), “P” (pending approval), “R” (rejected), “F” (fully approved).
++ **commentType** - *string* - Indicates the type of the comment.
++ **commentSequenceNumber** - *number* - A number used to order multiple lines of a comment.  
++ **commentText** - *string* - The wording of the comment.  
++ **commentPrint** - *boolean* - A flag which indicates whether the comment should print on reports.
++ **enteredBy** - *string* - The identifier of the person who entered the comment.
++ **entryDate** - *date* - The date on which the comment was entered.
+
+#### Get Master Item Comments Model [GET]
+
+    URL
+    /master/item/{id}/comments
+           
+    PAMAMETERS  
+      id: sarahEdiId
+	
++ Response 200 (application/json)
+
+         [{
+            "id": 1,
+            "itemNumber": "SVG1235",
+            "description": "EMU GLOVE",
+            "drawingNumber": "1234Draw",
+            "side": "right",
+            "itemSize": "large",
+            "asbuiltNumber": "A100L5B200R1RL",
+            "equipmentGroup": "TB100",
+            "status": "A",
+            "commentType": "IMO",
+            "commentSequenceNumber": "10",
+            "commentText":"SPECIFIED ITEMS ARE THE ONLY PRODUCTS PHYSICALLY",
+            "commentPrint": "Y",
+            "enteredBy": "EER_USER",
+            "entryDate": "05-AUG-88"
+		 }]
+		
 
 ### Quantity Model [/master/{id}/quantity]
 
