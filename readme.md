@@ -86,7 +86,6 @@ A **Component** model has the following properties:
 + **bill** - *arrry[object]* - The component's as-built bill of material assembly
     > [*Bill model*](http://docs.emuapi.apiary.io/#reference/components/bill-model)
 + **documents** - *array[object]* - The component's associated documents
-    > [*Subset of a Document model*](http://docs.emuapi.apiary.io/#reference/components/document-model)
 + **limitedlife** - *object* - The component's limited life information
     > [*Limited Life model*](http://docs.emuapi.apiary.io/#reference/components/limited-life-model)
 + **calibrations** - *object* - The component's calibration data.
@@ -807,20 +806,19 @@ A component's **Limited life** Model has the following properties:
 
 + **tracerNumber** - *string* - The SARAH component id **(primary key, unique)**
 + **tracerControlId** - *string* - The SARAH tracerControlId  **(primary key SARAH, unique)**
-+ **shelfLifeDueDate** - *date*
-+ **usageLifeDueDate** - *date*
-+ **operationLife** - *string*
-+ **nextGroundServiceDate** - *date*
-+ **operationLifeDueDate** - *date*
-+ **onOrbitServiceExpDueDate** - *date*
-+ **onOrbitServiceDueDate** - *date*
-+ **evaServiceCount** - *number*
-+ **evasRemainingCount** - *number*
-+ **mannedSublimatorTotalTime** - *string*
-+ **mannedCumulativeTotalTime** - *string*
-+ **remainingCycleCount** - *number*
-+ **cumulativeTime** - *string*
-+ **remainingTime** - *string*
++ **shelfLifeDate** - *date* - The latest date an item can remain "on the shelf" and still be considered as being usable.
++ **usageLifeDate** - *date* - The latest date an item can be used before it is reworked, recalibrated, or refurbished.
++ **nextGroundServiceDate** - *date* - The date the item’s next usage / service action is required.
++ **operationLifeDate** - *date* - The date the item’s operation life expires.  Operation Life starts when an item is removed from the shelf and put into use for the first time.
++ **onOrbitExpDate** - *date* - The date the item’s on-orbit life expires.  When the item goes on station, the clock starts and when the item is brought back, the clocks stops.
++ **onOrbitServiceDate** - *date* - The date the item’s next service action is required on orbit.
++ **evaServiceCount** - *number* - The number of EVAs remaining for the item before a service action is required.
++ **evasRemainingCount** - *number* - Number of EVAs remaining for the item based on total number of allowable EVAs minus the actual number of EVAs performed.
++ **mannedSublimatorTotalTime** - *string* - The remaining time before a pressurized item must be serviced.
++ **mannedCumulativeTotalTime** - *string* - The total amount of time on a pressurized item.
++ **remainingCycleCount** - *number* - The remaining number of cycles an item can be used before action needs to be taken or an item is no longer good for flight.
++ **cumulativeTime** - *string* - The cummulative amount of time an item has been used.
++ **remainingTime** - *string* - The remaining amount of time an item can be used before action needs to be taken or an item is no longer good for flight.
 + **lastUpdatedDate** - *string*
 
 ### Get Limited Life Model [GET]
@@ -833,13 +831,12 @@ URL
         {
             "tracerNumber": '123454qe',
             "tracerControlId": '1bc2',
-            "shelfLifeDueDate": '01-01-1970',
-            "usageLifeDueDate": '01-01-1970',
-            "operationLife": '12',
+            "shelfLifeDate": '01-01-1970',
+            "usageLifeDate": '01-01-1970',
             "nextGroundServiceDate": '01-01-1970',
-            "operationLifeDueDate": '01-01-1970',
-            "onOrbitServiceExpDueDate": '01-01-1970',
-            "onOrbitServiceDueDate": '01-01-1970',
+            "operationLifeDate": '01-01-1970',
+            "onOrbitExpDate": '01-01-1970',
+            "onOrbitServiceDate": '01-01-1970',
             "evaServiceCount": 5,
             "evasRemainingCount": 4,
             "mannedSublimatorTotalTime": '2:10',
