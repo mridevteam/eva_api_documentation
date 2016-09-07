@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mridevteam/eva_api_documentation.svg?branch=master)](https://travis-ci.org/mridevteam/eva_api_documentation)
+
 FORMAT: 1A
 
 # EVA-API
